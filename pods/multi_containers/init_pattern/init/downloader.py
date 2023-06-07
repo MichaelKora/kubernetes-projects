@@ -25,6 +25,12 @@ Init containers can securely run utilities or custom code that would otherwise m
 </html>
 """
 file_name = "/app/index.html"
+# file_name = "index.html"
 text_file = open(file_name, "w")
 text_file.write(web_content)
 text_file.close()
+
+file1 = open(file_name, mode='r')
+content = file1.read()
+print(content)
+file1.close()

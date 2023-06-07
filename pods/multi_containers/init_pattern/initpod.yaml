@@ -24,6 +24,17 @@ spec:
       volumeMounts:
         - name: shared-data
           mountPath: /usr/share/nginx/html
+  # initContainers:
+  #   - name: install
+  #     image: busybox:1.28
+  #     command:
+  #     - wget
+  #     - "-O"
+  #     - "/work-dir/index.html"
+  #     - http://info.cern.ch
+  #     volumeMounts:
+  #     - name: shared-data 
+  #       mountPath: "/work-dir"
 
   initContainers:
     - name: init-ctr
