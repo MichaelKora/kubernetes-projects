@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: pods-stack
   name: redis-svc
   labels:
     app: redis
@@ -15,6 +16,7 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
+  namespace: pods-stack
   name: redis-st
 spec:
   serviceName: "redis-svc"

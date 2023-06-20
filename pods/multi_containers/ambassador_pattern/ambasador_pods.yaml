@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  namespace: pods-stack
   name: ambassador-example
 spec:
   containers:

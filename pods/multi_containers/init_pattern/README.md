@@ -7,6 +7,6 @@ In this example, I am using a web server as main container and a container that 
 ## Deploy && destroy
 
 ```shell
-kubectl apply -f  -n pods-stack
-kubectl delete pod multi-ctr-init-xpl -n pods-stack
+kubectl apply -f  
+kubectl delete pod multi-ctr-init-xpl 
 ```

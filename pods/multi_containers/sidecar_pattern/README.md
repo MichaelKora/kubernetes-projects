@@ -7,9 +7,9 @@ In this example, the main app is an NGINX web server and serves a static web pag
 ## Deploy & destroy
 
 ```shell
-kubectl apply -f side_car_pods.yaml -n pods-stack
+kubectl apply -f side_car_pods.yaml 
 
 # deploy pod and service
-kubectl delete pod git-sync -n pods-stack
-kubectl delete service svc-sidecar -n pods-stack
+kubectl delete pod git-sync 
+kubectl delete service svc-sidecar 
 ```

@@ -10,18 +10,18 @@ In this example, we are considering a caching case. We have redis DB deployed an
 
 ```shell
 #deploy
-kubectl apply -f redis-dbs.yaml -n pods-stack
+kubectl apply -f redis-dbs.yaml 
 
 #destroy
-kubectl delete -f redis-dbs.yaml -n pods-stack
+kubectl delete -f redis-dbs.yaml 
 ```
 
 - Ambassador pods:
 
 ```shell
 #deploy
-kubectl apply -f ambasador_pods.yaml -n pods-stack
+kubectl apply -f ambasador_pods.yaml 
 
 #destroy
-kubectl delete -f ambasador_pods.yaml -n pods-stack
+kubectl delete -f ambasador_pods.yaml 
 ```
