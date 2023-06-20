@@ -5,5 +5,5 @@ Make sure to create a namespace where you will deploy all of the examples.
 
 ```shell
 kubectl create namespace pods-stack
-kubectl apply -f pods-namespace
+kubectl apply -f pods-namespace.yaml
 ```
