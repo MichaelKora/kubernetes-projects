@@ -23,22 +23,27 @@ spec:
           cpu: "200m"
       volumeMounts:
         - name: shared-data
-          mountPath: /usr/share/nginx/html
+          mountPath: "/usr/share/nginx/html"
+
   # initContainers:
-  #   - name: install
-  #     image: busybox:1.28
-  #     command:
-  #     - wget
-  #     - "-O"
-  #     - "/work-dir/index.html"
-  #     - http://info.cern.ch
+  #   - name: init-ctr
+  #     image: mikecode021/init-container:1.0.0
+  #     command: ["/bin/sh"]    
+  #     args:
+  #       - python3
+  #       - /app/downloader.py
   #     volumeMounts:
-  #     - name: shared-data 
-  #       mountPath: "/work-dir"
+  #       - mountPath: "/tmp/app"
+  #         name: shared-data
 
   initContainers:
-    - name: init-ctr
-      image: mikecode021/init-container:1.0.0
+    - name: install
+      image: busybox:1.28
+      command:
+      - wget
+      - "-O"
+      - "/work-dir/index.html"
+      - http://info.cern.ch
       volumeMounts:
-        - name: shared-data
-          mountPath: "/app"
+      - name: shared-data 
+        mountPath: "/work-dir"
