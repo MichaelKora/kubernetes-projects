@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: test-dps
+  name: webserver-dp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: dp-pods
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 300
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: dp-pods
+    spec:
+      containers:
+        - name: my-web-app
+          image: mikecode021/web-server:1.0.0
+          ports:
+            - containerPort: 80
