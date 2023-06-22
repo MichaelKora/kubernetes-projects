@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: test-dps
+  namespace: svc-ns
   name: webserver-dp
 spec:
-  replicas: 5
+  replicas: 10
   selector:
     matchLabels:
-      app: dp-pods
+      app: web-app
   revisionHistoryLimit: 5
   progressDeadlineSeconds: 300
   minReadySeconds: 10
@@ -19,10 +19,10 @@ spec:
   template:
     metadata:
       labels:
-        app: dp-pods
+        app: web-app
     spec:
       containers:
         - name: my-web-app
-          image: mikecode021/web-server:1.0.0
+          image: mikecode021/web-server:2.0.0
           ports:
             - containerPort: 80

@@ -2,13 +2,18 @@ kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 name: learning-cluster
 networking:
-  ipFamily: dual        
+  ipFamily: dual
 nodes:
-- role: control-plane
-  image: kindest/node:v1.27.2 # the kubectl version should not be more than one minor version higher or lower than the cluster.
-- role: worker
-  image: kindest/node:v1.27.2
-- role: worker
-  image: kindest/node:v1.27.2
-- role: worker
-  image: kindest/node:v1.27.2
+  - role: control-plane
+    image: kindest/node:v1.27.2 # the kubectl version should not be more than one minor version higher or lower than the cluster.
+    extraPortMappings:
+    - containerPort: 30003
+      hostPort: 30003
+      listenAddress: "127.0.0.1"
+      protocol: TCP
+  - role: worker
+    image: kindest/node:v1.27.2
+  - role: worker
+    image: kindest/node:v1.27.2
+  - role: worker
+    image: kindest/node:v1.27.2

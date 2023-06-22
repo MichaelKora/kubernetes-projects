@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: svc-ns
+  name: gcp-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 9000
+      targetPort: 80
+  selector:
+    app: web-app
