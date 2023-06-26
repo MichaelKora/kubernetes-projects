@@ -1,3 +1,3 @@
-# kubernetes-projects
+# K8s-Projects
 
-This repo is built do store my progress while learning k8s
+This repo covers/implements some core concepts of k8s.
