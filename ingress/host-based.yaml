@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: universe-host-based
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: milky-way.universe.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: milky-way-svc
+                port:
+                  number: 80
+    - host: needle-galaxy.universe.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: needle-galaxy-svc
+                port:
+                  number: 80
+            pathType: Prefix
+            path: /
+    - host: fireworks-galaxy.universe.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: fireworks-galaxy-svc
+                port:
+                  number: 80
+            pathType: Prefix
+            path: /
