@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: north-pole
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: planets
+  namespace: north-pole
+  annotations:
+    galaxy: milky-way
+spec:
+  selector:
+    matchLabels:
+      galaxy: milky-way
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        galaxy: milky-way
+    spec:
+      containers:
+        - name: awesome-planets
+          image: nigelpoulton/k8sbook:text-dev
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: telescope
+  namespace: north-pole
+spec:
+  selector:
+    galaxy: milky-way
+  ports:
+    - port: 8080
+      targetPort: 8080
