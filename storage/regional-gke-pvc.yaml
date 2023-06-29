@@ -1,0 +1,44 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: gke-experimental-sc
+provisioner: pd.csi.storage.gke.io
+parameters:
+  type: pd-ssd
+  replication-type: regional-pd
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: experimental-pvc
+spec:
+  storageClassName: gke-experimental-sc
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-experimental-app
+spec:
+  volumes:
+    - name: app-db
+      persistentVolumeClaim:
+        claimName: experimental-pvc
+  containers:
+    - name: awesome-app
+      image: ubuntu-ctr
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - mountPath: /data
+          name: app-db
