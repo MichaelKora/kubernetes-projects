@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hdls-svc
+  labels:
+    app: web
+spec:
+  selector:
+    app: web
+  ports:
+    - port: 80
+      name: web
+  clusterIP: None
