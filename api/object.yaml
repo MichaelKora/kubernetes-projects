@@ -1,0 +1,8 @@
+apiVersion: michaelkora.com/v1
+kind: Galaxy
+metadata:
+  name: leda
+spec:
+  galaxyName: "LEDA 83677"
+  galaxyShape: "Lenticular galaxy"
+  distance: 288510000

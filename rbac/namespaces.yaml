@@ -1,0 +1,21 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: namespace-1
+  labels:
+    name: k8s-project
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: namespace-2
+  labels:
+    name: k8s-project
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: namespace-3
+  labels:
+    name: k8s-project
+

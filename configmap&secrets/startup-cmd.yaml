@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: awesome-pod
+spec:
+  containers:
+    - name: awesome-pod
+      image: busybox
+      command:
+        [
+          "/bin/sh",
+          "-c",
+          "echo My firstname is $(firstname) and my lastname is $(lastname)",
+        ]
+      env:
+        - name: firstname
+          valueFrom:
+            configMapKeyRef:
+              name: cm-entries
+              key: name
+        - name: lastname
+          valueFrom:
+            configMapKeyRef:
+              name: cm-entries
+              key: famName
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"

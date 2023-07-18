@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-names
+data:
+  firstname: ${K8S_NAME}
+  lastname: Doe
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vol-pod
+spec:
+  volumes:
+    - name: vol-map
+      configMap:
+        name: cm-names
+  containers:
+    - name: vol-pod
+      image: nginx
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      volumeMounts:
+        - mountPath: /etc/name
+          name: vol-map

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: single-cm
+data:
+  Person.jd: |
+    firstName = John
+    familyName = Doe
+    job = Kubernetes-Enginer
+    address = configmap-street
+    city = could-native
