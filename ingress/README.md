@@ -42,11 +42,11 @@ kubectl delete -f my-web-app.yaml
 - Ingress objects
 
 ```shell
-kubectl apply -f host-based.yaml
 kubectl apply -f path-based.yaml
+kubectl apply -f host-based.yaml
 
-kubectl delete -f host-based.yaml
 kubectl delete -f path-based.yaml
+kubectl delete -f host-based.yaml
 ```
 
 - Configure DNS
